@@ -1,10 +1,13 @@
+// src/components/SaleForm.js
 import React, { useState } from "react";
 import "./SaleForm.css";
+
+const BACKEND_URL = "https://wings-cafe-backend-2-1ha8.onrender.com";
 
 function SaleForm({ products = [], recordSale }) {
   const [cart, setCart] = useState([]);
   const [quantities, setQuantities] = useState({});
-  const [message, setMessage] = useState(""); // <-- success message
+  const [message, setMessage] = useState("");
 
   const handleQuantityChange = (productId, value) => {
     setQuantities({
@@ -41,27 +44,20 @@ function SaleForm({ products = [], recordSale }) {
       return;
     }
 
-    // Record sales
     cart.forEach(({ product, quantity }) => {
-      recordSale({
-        productId: product.id,
-        quantity,
-      });
+      recordSale({ productId: product.id, quantity });
     });
 
     setCart([]);
     setQuantities({});
-    setMessage("✅ Sale completed successfully!"); // <-- show message
-
-    // Hide the message after 3 seconds
+    setMessage("✅ Sale completed successfully!");
     setTimeout(() => setMessage(""), 3000);
   };
 
   return (
     <div className="sale-form-container">
       <h3>Sales</h3>
-
-      {message && <p className="sale-message">{message}</p>} {/* message display */}
+      {message && <p className="sale-message">{message}</p>}
 
       <table className="product-table">
         <thead>
@@ -79,7 +75,7 @@ function SaleForm({ products = [], recordSale }) {
             <tr key={p.id} className={p.quantity <= 5 ? "low-stock" : ""}>
               <td>
                 <img
-                  src={p.image || "/images/default.webp"}
+                  src={p.image ? `${BACKEND_URL}/${p.image}` : `${BACKEND_URL}/default.webp`}
                   alt={p.name}
                   className="product-thumb"
                 />
@@ -125,9 +121,7 @@ function SaleForm({ products = [], recordSale }) {
                   <td>{item.quantity}</td>
                   <td>M{item.product.price * item.quantity}</td>
                   <td>
-                    <button onClick={() => removeFromCart(item.product.id)}>
-                      ❌
-                    </button>
+                    <button onClick={() => removeFromCart(item.product.id)}>❌</button>
                   </td>
                 </tr>
               ))}
@@ -136,10 +130,7 @@ function SaleForm({ products = [], recordSale }) {
 
           <p>
             Total: M
-            {cart.reduce(
-              (sum, item) => sum + item.product.price * item.quantity,
-              0
-            )}
+            {cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0)}
           </p>
 
           <button onClick={handleSubmit}>💰 Complete Sale</button>

@@ -1,5 +1,8 @@
+// src/components/StockForm.js
 import React, { useState } from "react";
 import "./StockForm.css";
+
+const BACKEND_URL = "https://wings-cafe-backend-2-1ha8.onrender.com";
 
 function StockForm({ products = [], updateStock }) {
   const [selectedProductId, setSelectedProductId] = useState(null);
@@ -23,7 +26,6 @@ function StockForm({ products = [], updateStock }) {
       quantity: parseInt(quantity),
     });
 
-    // Reset form
     setSelectedProductId(null);
     setType("add");
     setQuantity(1);
@@ -56,7 +58,7 @@ function StockForm({ products = [], updateStock }) {
                 </td>
                 <td>
                   <img
-                    src={p.image || "/images/default.webp"}
+                    src={p.image ? `${BACKEND_URL}/${p.image}` : `${BACKEND_URL}/default.webp`}
                     alt={p.name}
                     className="product-thumb"
                   />

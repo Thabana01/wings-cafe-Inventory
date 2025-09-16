@@ -1,6 +1,8 @@
-// Dashboard.js
+// src/components/Dashboard.js
 import React from "react";
 import "./Dashboard.css";
+
+const BACKEND_URL = "https://wings-cafe-backend-2-1ha8.onrender.com";
 
 function Dashboard({ products, sales }) {
   const totalProducts = products.length;
@@ -32,18 +34,20 @@ function Dashboard({ products, sales }) {
       <h2 style={{ marginTop: "40px" }}>Products Menu</h2>
       <div className="cards-horizontal">
         {products.map((product) => (
-          <div
-            className="product-card"
-            key={product.id}
-          >
+          <div className="product-card" key={product.id}>
             <img
-              src={product.image || "/images/default.webp"}
+              src={product.image ? `${BACKEND_URL}/${product.image}` : `${BACKEND_URL}/default.webp`}
               alt={product.name}
               className="product-image"
             />
             <h3>{product.name}</h3>
             <p>Price: M{product.price}</p>
-            <p style={{ color: product.quantity <= 5 ? "red" : "#007bff", fontWeight: product.quantity <= 5 ? "bold" : "normal" }}>
+            <p
+              style={{
+                color: product.quantity <= 5 ? "red" : "#007bff",
+                fontWeight: product.quantity <= 5 ? "bold" : "normal",
+              }}
+            >
               Qty: {product.quantity}
             </p>
           </div>
