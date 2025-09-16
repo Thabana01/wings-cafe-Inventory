@@ -1,0 +1,161 @@
+body, html, ul, li {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: url("/th.webp") no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dashboard wrapper */
+.dashboard {
+  flex: 1;   /* e lumella main-content hore e push footer tlase */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background: #1e2a38;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 15px;
+  z-index: 1000;
+}
+
+.top-nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00c3ff;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+  color: #00c3ff;
+}
+
+.nav-links .active {
+  border-bottom: 2px solid #00c3ff;
+  padding-bottom: 0.2rem;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  padding-top: 90px;  /* ho qoba navbar overlap */
+}
+
+.main-content h2 {
+  margin-bottom: 1rem;
+  color: white;
+}
+
+/* Low stock style */
+.low-stock {
+  background-color: #ffe5e5;
+  border: 1px solid #ff4d4d;
+  color: #b30000;
+  font-weight: bold;
+}
+
+/* Cards */
+.card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: blue;
+  margin-bottom: 12px;
+  text-transform: capitalize;
+}
+
+/* Footer (sticky) */
+.app-footer {
+  margin-top: auto; /* boloka e le sticky qetellong */
+  background: linear-gradient(90deg, #1e2a38, #243b55);
+  color: #e5e7eb;
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.25);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.app-footer a {
+  color: #00c3ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.app-footer a:hover {
+  color: #ffffff;
+}
+
+/* Headers */
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: blue;
+  text-align: center;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-bottom: 8px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin: 25px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 3px solid blue;
+  padding-bottom: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .nav-links li {
+    padding: 0.5rem 0;
+    width: 100%;
+  }
+}

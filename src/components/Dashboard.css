@@ -1,0 +1,114 @@
+.dashboard {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.dashboard h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: blue;
+}
+
+/* ===== Cards Section (Overview) ===== */
+.cards-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  background: bisque;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #f8f9fa;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* ===== Product Cards ===== */
+.product-card {
+  width: 200px;
+  padding: 15px;
+  margin: 10px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  background: #ffe6cc;
+}
+
+.product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+.product-card p {
+  margin: 2px 0;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* ===== Low Stock Styles ===== */
+.product-card.low-stock {
+  background-color: #ffe5e5;
+  border: 1px solid #ff4d4d;
+}
+
+.low-stock-text {
+  color: red;
+  font-weight: bold;
+}
+
+.low-stock-badge {
+  background-color: red;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-left: 10px;
+}
+
+/* Align product name + badge in one row */
+.product-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

@@ -1,0 +1,46 @@
+.product-form {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 1rem;
+  padding: 2rem;
+  max-width: 900px; 
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.product-form input {
+  flex: 1 1 200px; 
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+.product-form button {
+  flex: 1 1 100px; 
+  padding: 0.9rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  align-self: flex-end; 
+}
+
+.product-form button:hover {
+  background: linear-gradient(135deg, #0056b3, #004494);
+  transform: scale(1.02);
+}

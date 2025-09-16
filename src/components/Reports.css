@@ -1,0 +1,144 @@
+/* src/components/Reports.css */
+
+/* General container */
+.reports-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Section styles */
+section {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Section headings */
+section h2, section h3 {
+  margin-bottom: 15px;
+  color: blue;
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.card {
+  flex: 1 1 150px;
+  background-color: #e3f2fd;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h4 {
+  margin-bottom: 10px;
+  color: #1976d2;
+}
+
+.card p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.card.revenue {
+  background-color: #c8e6c9;
+}
+
+.card.profit {
+  background-color: #fff3e0;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+thead {
+  background-color: #1976d2;
+  color: white;
+}
+
+thead th {
+  padding: 10px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Delete button */
+.delete-btn {
+  background-color: #e57373;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Highlight deleted rows */
+.deleted {
+  background-color: #ffebee;
+}
+
+/* Responsive tables */
+@media (max-width: 768px) {
+  .summary-cards {
+    flex-direction: column;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+  }
+
+  tbody td {
+    padding: 8px;
+    text-align: right;
+    position: relative;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
