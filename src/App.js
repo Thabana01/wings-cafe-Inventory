@@ -8,6 +8,9 @@ import Reports from "./components/Reports";
 import Dashboard from "./components/Dashboard";
 import "./App.css";
 
+// --- Use live Render backend URL ---
+const API_BASE_URL = "https://wings-cafe-backend-2-1ha8.onrender.com";
+
 function App() {
   const [products, setProducts] = useState([]);
   const [sales, setSales] = useState([]);
@@ -19,7 +22,7 @@ function App() {
   // Fetch data from backend
   const fetchData = async (endpoint, setState) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/${endpoint}`);
+      const res = await fetch(`${API_BASE_URL}/api/${endpoint}`);
       if (!res.ok) throw new Error(`Failed to fetch ${endpoint}`);
       const data = await res.json();
       setState(data || []);
@@ -46,7 +49,7 @@ function App() {
 
   // --- Products ---
   const addProduct = async (product) => {
-    await fetch("http://localhost:5000/api/products", {
+    await fetch(`${API_BASE_URL}/api/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...product, transactions: [] }),
@@ -55,7 +58,7 @@ function App() {
   };
 
   const updateProduct = async (id, updatedProduct) => {
-    await fetch(`http://localhost:5000/api/products/${id}`, {
+    await fetch(`${API_BASE_URL}/api/products/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedProduct),
@@ -65,7 +68,7 @@ function App() {
   };
 
   const deleteProduct = async (id) => {
-    await fetch(`http://localhost:5000/api/products/${id}`, { method: "DELETE" });
+    await fetch(`${API_BASE_URL}/api/products/${id}`, { method: "DELETE" });
     fetchData("products", setProducts);
   };
 
@@ -84,13 +87,13 @@ function App() {
       ],
     };
 
-    await fetch(`http://localhost:5000/api/products/${productId}`, {
+    await fetch(`${API_BASE_URL}/api/products/${productId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedProduct),
     });
 
-    await fetch("http://localhost:5000/api/sales", {
+    await fetch(`${API_BASE_URL}/api/sales`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -110,7 +113,7 @@ function App() {
   const deleteSale = async (id) => {
     const sale = sales.find((s) => s.id === id);
     if (!sale) return;
-    await fetch(`http://localhost:5000/api/sales/${id}`, {
+    await fetch(`${API_BASE_URL}/api/sales/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...sale, status: "deleted" }),
@@ -137,7 +140,7 @@ function App() {
       ],
     };
 
-    await fetch(`http://localhost:5000/api/products/${productId}`, {
+    await fetch(`${API_BASE_URL}/api/products/${productId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedProduct),
